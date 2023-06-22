@@ -1,0 +1,21 @@
+{
+  "name": "logo-creator",
+  "version": "1.0.0",
+  "description": "Generates a logo",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Logo-Creator"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "dependencies": {
+    "inquirer": "^9.2.7"
+  }
+}
