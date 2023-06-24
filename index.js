@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 
 const fs = require("fs");
 
+const Colors = require("./lib/additional");
 const Shape = require("./lib/shapes");
 const Triangle = require("./lib/shapes");
 const Circle = require("./lib/shapes");
@@ -14,10 +15,15 @@ const questions = [
         name: "text",
     },
     {
-        type: "list",
+        type: "input",
         message: "What is the color of your logo's text?",
         name: "textColor",
-        choices: ["White", "Black", "Yellow"],
+         colors: (input) => {
+        const validate = new Validate("", "", input);
+        if (validate.colorsTextColor()) {
+            return true;
+      } else throw "Incorrect color choice, must be hexacode or color keyword.";
+    }
     },    
     {
         type: "list",
@@ -26,10 +32,16 @@ const questions = [
         choices: ["Triangle", "Circle", "Square"],
     },    
     {
-        type: "list",
+        type: "input",
         message: "What color is your logo's background shape?",
         name: "shapeColor",
-        choices:["Red", "Green", "Blue"],
+        colors: (input) => {
+        const validate = new Validate("", "", input);
+        if (validate.colorsShapeColor()) {
+        return true;
+      } else throw "Incorrect Shape Color choice, must be hexacode or color keyword.";
+    }
+  
     },    
 ];
 
