@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+
 const fs = require("fs");
 
 const Shape = require("./lib/shapes");
@@ -13,19 +14,22 @@ const questions = [
         name: "text",
     },
     {
-        type: "input",
+        type: "list",
         message: "What is the color of your logo's text?",
         name: "textColor",
+        choices: ["White", "Black", "Yellow"],
     },    
     {
         type: "list",
         message: "What would you like as the shape of your logo?",
         name: "shape",
+        choices: ["Triangle", "Circle", "Square"],
     },    
     {
-        type: "input",
+        type: "list",
         message: "What color is your logo's background shape?",
         name: "shapeColor",
+        choices:["Red", "Green", "Blue"],
     },    
 ];
 
@@ -53,12 +57,12 @@ inquirer.prompt(questions)
     })
 
     .then((results) => {
-        const shapeRender = result.renderShape();
-        const shapeTextRender = result.renderText();
+        const shapeRender = results.renderShape();
+        const shapeTextRender = results.renderText();
         const fullRender = `
-        <svg version="1.1"
-     width="300" height="200"
-     xmlns="http://www.w3.org/2000/svg">
+    <svg version="1.1"
+        width="300" height="200"
+        xmlns="http://www.w3.org/2000/svg">
 
   ${shapeRender}
 
@@ -66,10 +70,10 @@ inquirer.prompt(questions)
 
 </svg>
 `;
-    fs.writeFile(`./examples/${result.text}.svg`, fullRender, (err) =>
+    fs.writeFile(`./examples/${results.text}.svg`, fullRender, (err) =>
       err
         ? console.log(err)
-        : console.log(`Success! Generated ${result.text}.svg`)
+        : console.log(`Success! Generated ${results.text}.svg`)
     );
   });
     
