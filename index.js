@@ -51,17 +51,17 @@ inquirer.prompt(questions)
     
         switch(shape) {
             case "Triangle":
-              let triSVG = 'polygon points="300,10 220,190 400,190"';
+              let triSVG = 'polygon points="150, 18 244, 182 56, 182"';
               let triangle = new Triangle(text, textColor, shapeColor, triSVG);
               return triangle;
               break;
             case "Circle":
-              let cirSVG = 'circle cx="25" cy="75" r="20"';
+              let cirSVG = 'circle cx="150" cy="100" r="80"';
               let circle = new Circle(text, textColor, shapeColor, cirSVG);
               return circle;
               break;  
             case "Square":
-              let squareSVG = 'rect x="50" y="20" width="150" height="150"';
+              let squareSVG = 'rect width="100%" height="100%"';
               let square = new Square(text, textColor, shapeColor, squareSVG);
               return square;
               break;  
